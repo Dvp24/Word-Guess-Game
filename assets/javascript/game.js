@@ -1,21 +1,32 @@
+// setting variables
 win = 0;
 losses = 0;
 guess = 15;
-computerOptionsArr = ["closer","dont let me down","roses","paris"];
-
-function wordSel(){
-  var computerChoice = computerOptionsArr[Math.floor(Math.random()*computerOptionsArr.length)];
+// Input 1: computer selecting a random word from an array
+computerOptionsArr = ["closer", "dont let me down", "roses", "paris"];
+function wordSel() {
+  var computerChoice = computerOptionsArr[Math.floor(Math.random() * computerOptionsArr.length)];
   // console.log(computerChoice);
   return computerChoice;
-  }
-  document.getElementById("demo").innerHTML = wordSel();
-
-// why mot taking command properly?????
-var wordLetter = wordSel().charAt(0);
-document.getElementById("demo2").innerHTML = wordLetter;
-
-// condition check for equal letters
-
-if(wordLetter === userguess){
-  // replace - by that letter
 }
+var word = wordSel();
+console.log(word);
+document.getElementById("demo").innerHTML = wordSel();
+
+//condition1 : guess left condition check
+function guessLeft() {
+  guess--;
+  if (guess == 0) {
+    losses++;
+    wordSel();
+  }
+  else
+    // userGuess();
+    // user selects letter ////how to write all guesses in a row?????????
+    document.onkeyup = function (event) {
+      var userGuess = event.key;
+      console.log(userGuess);
+      document.getElementById("demo1").innerHTML = userGuess;
+    }
+}
+
