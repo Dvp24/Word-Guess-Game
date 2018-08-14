@@ -9,8 +9,6 @@ function wordSel() {
   // console.log(computerChoice);
   return computerChoice;
 }
-var word = wordSel();
-console.log(word);
 document.getElementById("demo").innerHTML = wordSel();
 
 //condition1 : guess left condition check
@@ -20,13 +18,13 @@ function guessLeft() {
     losses++;
     wordSel();
   }
-  else
-    // userGuess();
-    // user selects letter ////how to write all guesses in a row?????????
-    document.onkeyup = function (event) {
-      var userGuess = event.key;
-      console.log(userGuess);
-      document.getElementById("demo1").innerHTML = userGuess;
-    }
+}
+//input 2: user selects letter ////how to write all guesses in a row?????????
+document.onkeyup = function (event) {
+  var userGuess = event.key;
+  console.log(userGuess);
+  document.getElementById("demo1").innerHTML = userGuess;
 }
 
+var check = wordSel.includes("userguess");
+console.log(check);
