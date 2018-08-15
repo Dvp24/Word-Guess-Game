@@ -5,8 +5,9 @@ var guess = 15;
 var hiddenWord = '';
 var guessesTillNow = [];
 var replaced = '';
-var userGuess;
+var userGuess = '';
 var lettr = '';
+var newString = '';
 // Input 1: computer selecting a random word from an array
 computerOptionsArr = ["closer", "dont let me down", "roses", "paris"];
 var word = '';
@@ -17,12 +18,13 @@ function wordSel() {
 // printing --------- instead of word
 function printBlank() {
   word = wordSel();
-  console.log("word : " + word);
-  console.log("length : " + word.length);
-  var blank = "-";
-  console.log(blank.repeat(word.length));
+  document.getElementById("demo3").innerHTML = "selected word: " + word;
+  document.getElementById("demo").innerHTML = "length : " + word.length;
+
+  var blank = "- ";
   var hiddenWord = blank.repeat(word.length);
-  console.log(hiddenWord);
+  document.getElementById("demo1").innerHTML = "blank word : " + hiddenWord;
+
 }
 
 
@@ -31,29 +33,30 @@ printBlank();
 if (guess > 0) {
   document.onkeyup = function (event) {
     userGuess = event.key;
-    document.getElementById("demo").innerHTML = "letter " + userGuess
+    document.getElementById("demo2").innerHTML = "guessed letter " + userGuess
     console.log("letter " + userGuess);
     guess--;
     console.log("guess left " + guess);
+    document.getElementById("demo5").innerHTML = "guesses left " + guess;
+
     guessesTillNow.push(userGuess);
-    console.log("till now " + guessesTillNow);
-    for (var i = 0; i < word.length; i++) {
-      var first = word.charAt(i);
-      if (first == userGuess) {
-        console.log("true");
-        lettr = hiddenWord[i];
-        replaced = hiddenWord.replace(lettr, userGuess);
-        console.log("new " + replaced);
-      }
-      else {
-        console.log("false try again");
+    document.getElementById("demo4").innerHTML = "till now " + guessesTillNow;
+    
+    for(var i=0; i < word.length; i++){
+      if ( word[i]==userGuess ){
+      document.getElementById("demo6").innerHTML = "right ";
+       newString = hiddenWord.replace(hiddenWord[i], userGuess);
+       document.getElementById("demo4").innerHTML = "nw string " + newString;
 
       }
+      else 
+      document.getElementById("demo6").innerHTML = "wrong ";
+
     }
+    
   }
 
 }
-
 
 
 
