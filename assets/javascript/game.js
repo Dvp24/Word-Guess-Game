@@ -36,30 +36,32 @@ var hiddenWord = '';
 var userGuess = '';
 var hiddenWordArr = [];
 var guessesTillNow = [];
-
+var vid;
 var computerOptArr = ["closer", "roses", "dont let me down", "paris", "somebody", "you owe me"];
 printBlank();
 
 document.onkeyup = function (event) {
   userGuess = event.key;
   guessesTillNow.push(userGuess);
-  document.getElementById("demo").innerHTML = " "+ guessesTillNow;
+  document.getElementById("demo3").innerHTML = "";
+
+  document.getElementById("demo").innerHTML=  guessesTillNow;
   if (guess > 0) {
     guess--;
-    document.getElementById("demo1").innerHTML = "guesses left: " + guess;
+    document.getElementById("demo1").innerHTML = "Guesses Left: " + guess;
     for (var j = 0; j < word.length; j++) {
       if (word[j] == userGuess) {
         hiddenWordArr = hiddenWord.split("");
         hiddenWordArr[j] = userGuess;
         hiddenWord = hiddenWordArr.join("");
-        document.getElementById("demo3").innerHTML = "right ";
-        document.getElementById("demo2").innerHTML = "newHiddenWord: " + hiddenWord;
+        document.getElementById("demo2").innerHTML = "" + hiddenWord;
         if (hiddenWord === word) {
-          document.getElementById("demo4").innerHTML = "congratulations you won";
+          document.getElementById("demo3").innerHTML = "Congratulations You Won!!";
           win++;
           document.getElementById("demo8").innerHTML = win;
           //  play music in background for few minutes
-          var aud = document.getElementById("closer");
+            vid = document.getElementById("mySong");
+            vid.play();
           newGame();
         }
         else {
@@ -67,13 +69,11 @@ document.onkeyup = function (event) {
         }
       }
       else {
-        document.getElementById("demo5").innerHTML = "wrong ";
       }
     }
   } else {
-    document.getElementById("demo4").innerHTML = "game over";
+    document.getElementById("demo3").innerHTML = "Game Over";
     //function for new game
-
     losses++;
     document.getElementById("demo9").innerHTML = losses;
     newGame();
@@ -89,8 +89,11 @@ function newGame() {
   userGuess = '';
   hiddenWordArr = [];
   guessesTillNow = [];
+
   document.getElementById("demo").innerHTML = " ";
   printBlank();
+  vid = document.getElementById("mySong");
+  vid.pause();
 
   //function to select random word from an array    
 }
@@ -109,11 +112,7 @@ function printBlank() {
     else {
       hiddenWord = hiddenWord + "_";
     }
-    document.getElementById("demo2").innerHTML = "blanks: " + hiddenWord;
+    document.getElementById("demo2").innerHTML = " " + hiddenWord;
+
   }
-}
-// function to play an audio for few minutes after correct guess
-function playAudio() {
-  var aud = 
-  aud.play();
 }

@@ -1,5 +1,19 @@
-.bg-tomato,.border-tomato{
-  border-color: tomato!important;
-  background-color: tomato;
-  /* color: #fffff!important; */
+*{
+  color: black;
+  border: 1px;
+}
+body{
+  background-image: url("https://images.pexels.com/photos/235985/pexels-photo-235985.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background-size: cover;
+  margin: 0px;
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center;
+}
+.right{
+  text-align: right;
+  margin-right: 100px;
+}
+.border_black{
+  border-color: black!important;
 }
